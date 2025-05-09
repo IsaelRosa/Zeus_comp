@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Orçamento | Sistema ERP</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/budget.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="list.html">Orçamentos</a></li>
+        <li><a href="../clients/create.html">Clientes</a></li>
+        <li><a href="..//reports/financial.html">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="../index.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Detalhes do Orçamento</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <div class="budget-detail">
+        <div class="detail-row">
+          <span class="detail-label">Número:</span>
+          <span id="budgetNumber" class="detail-value">ORC-2023-001</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Data:</span>
+          <span id="budgetDate" class="detail-value">15/03/2023</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Projeto:</span>
+          <span id="budgetProject" class="detail-value">Website Corporativo</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Cliente:</span>
+          <span id="budgetClient" class="detail-value">Cliente A</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Responsável:</span>
+          <span id="budgetResponsible" class="detail-value">João Silva</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Valor Estimado:</span>
+          <span id="budgetValue" class="detail-value">R$ 12.500,00</span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Status:</span>
+          <span id="budgetStatus" class="detail-value status-badge em-análise">Em análise</span>
+        </div>
+        
+        <div class="detail-actions">
+          <a href="edit.html?id=1" class="btn">Editar</a>
+          <button id="deleteBtn" class="btn btn-danger">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/budget.js"></script>
+  <script>
+    // Verifica autenticação
+    checkAuth();
+    
+    // Carrega dados do orçamento
+    const urlParams = new URLSearchParams(window.location.search);
+    const budgetId = urlParams.get('id');
+    
+    if (budgetId) {
+      // Simulação: busca orçamento (em produção, seria uma requisição AJAX)
+      const budget = {
+        id: budgetId,
+        number: 'ORC-2023-001',
+        project: 'Website Corporativo',
+        client: 'Cliente A',
+        value: 12500.00,
+        responsible: 'João Silva',
+        status: 'Em análise',
+        date: '15/03/2023'
+      };
+      
+      // Preenche os detalhes
+      document.getElementById('budgetNumber').textContent = budget.number;
+      document.getElementById('budgetDate').textContent = budget.date;
+      document.getElementById('budgetProject').textContent = budget.project;
+      document.getElementById('budgetClient').textContent = budget.client;
+      document.getElementById('budgetResponsible').textContent = budget.responsible;
+      document.getElementById('budgetValue').textContent = 
+        'R$ ' + budget.value.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+      document.getElementById('budgetStatus').textContent = budget.status;
+      document.getElementById('budgetStatus').className = 
+        'detail-value status-badge ' + budget.status.toLowerCase().replace(' ', '-');
+      
+      // Configura botão de edição
+      document.querySelector('.detail-actions a').href = `edit.html?id=${budgetId}`;
+      
+      // Configura botão de exclusão
+      document.getElementById('deleteBtn').addEventListener('click', function() {
+        if (confirm('Tem certeza que deseja excluir este orçamento?')) {
+          alert('Orçamento excluído com sucesso!');
+          window.location.href = 'list.html';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

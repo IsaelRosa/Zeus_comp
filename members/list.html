@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funcionários | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/members.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="../images/logo.png" alt="ComplIR Logo">
+      <h1>ComplIR</h1>
+      <p>Sistema ERP</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="../budgets/list.html"><i class="fas fa-file-invoice-dollar"></i> Orçamentos</a></li>
+        <li><a href="list.html" class="active"><i class="fas fa-users"></i> Funcionários</a></li>
+        <li><a href="../reports/financial.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+      </ul>
+    </nav>
+    <div class="user-actions">
+      <span>Administrador</span>
+      <a href="../index.html" onclick="logout()">Sair</a>
+    </div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <header>
+      <h2>Todos os funcionários</h2>
+      <p>Visualizar, pesquisar e adicionar novos funcionários</p>
+    </header>
+
+    <div class="content">
+      <!-- Barra de ações -->
+      <div class="actions-bar">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Digite o nome de pesquisa">
+          <button id="searchBtn" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="stats">
+          <h3>250</h3>
+          <p>Total de funcionários</p>
+        </div>
+        <div class="filter-bar">
+          <label for="filterSelect">Filtrar funcionário</label>
+          <select id="filterSelect">
+            <option value="all">Todos</option>
+            <option value="admin">Admin</option>
+            <option value="rh">RH</option>
+            <option value="projetos">Projetos</option>
+          </select>
+        </div>
+        <div class="add-new">
+          <a href="create.html" class="btn btn-primary">Adicionar novo</a>
+        </div>
+      </div>
+
+      <!-- Tabela de funcionários -->
+      <div class="members-table-container">
+        <table class="members-table">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Nascimento</th>
+              <th>Ingresso</th>
+              <th>Email</th>
+              <th>Área</th>
+              <th>Cargo</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="membersTableBody">
+            <!-- Dados serão preenchidos via JavaScript -->
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span>Mostrando</span>
+          <select id="rowsPerPage">
+            <option value="10">10</option>
+            <option value="12" selected>12</option>
+            <option value="20">20</option>
+          </select>
+          <span>por página</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/members.js"></script>
+  <script>
+    // Verifica autenticação
+    checkAuth();
+    
+    // Carrega lista de membros
+    loadMembers();
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Cliente | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/clients.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- Menu lateral igual ao list.html -->
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <!-- Cabeçalho igual ao list.html -->
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Cadastrar Novo Cliente</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <form id="createClientForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="clientType">Tipo de Cliente *</label>
+            <select id="clientType" class="form-control" required>
+              <option value="">Selecione</option>
+              <option value="PF">Pessoa Física</option>
+              <option value="PJ">Pessoa Jurídica</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Nome/Razão Social *</label>
+            <input type="text" id="fullName" class="form-control" required>
+          </div>
+          
+          <div class="form-group" id="documentField">
+            <label for="document">CPF/CNPJ *</label>
+            <input type="text" id="document" class="form-control" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Telefone *</label>
+            <input type="tel" id="phone" class="form-control" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="address">Endereço</label>
+          <textarea id="address" class="form-control" rows="2"></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn">Cadastrar</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/clients.js"></script>
+  <script>
+    checkAuth();
+    
+    // Dinâmica do tipo de cliente
+    document.getElementById('clientType').addEventListener('change', function() {
+      const docField = document.getElementById('documentField');
+      if (this.value === 'PF') {
+        docField.innerHTML = '<label for="document">CPF *</label><input type="text" id="document" class="form-control" required>';
+      } else if (this.value === 'PJ') {
+        docField.innerHTML = '<label for="document">CNPJ *</label><input type="text" id="document" class="form-control" required>';
+      }
+    });
+  </script>
+</body>
+</html>

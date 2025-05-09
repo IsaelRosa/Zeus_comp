@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Orçamento | Sistema ERP</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/budget.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="list.html">Orçamentos</a></li>
+        <li><a href="../clients/create.html">Clientes</a></li>
+        <li><a href="../reports/financial.html">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="../index.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Editar Orçamento</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <form id="editBudgetForm">
+        <input type="hidden" id="budgetId">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="budgetNumber">Número do Orçamento</label>
+            <input type="text" id="budgetNumber" class="form-control" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="creationDate">Data de Criação</label>
+            <input type="text" id="creationDate" class="form-control" readonly>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="projectDescription">Descrição do Projeto</label>
+          <textarea id="projectDescription" class="form-control" rows="3" required></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="client">Cliente Associado</label>
+            <select id="client" class="form-control" required>
+              <option value="">Selecione um cliente</option>
+              <option value="1">Cliente A</option>
+              <option value="2">Cliente B</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="responsible">Responsável pelo Orçamento</label>
+            <select id="responsible" class="form-control" required>
+              <option value="">Selecione um responsável</option>
+              <option value="1">João Silva</option>
+              <option value="2">Maria Souza</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="estimatedValue">Valor Estimado (R$)</label>
+            <input type="number" id="estimatedValue" class="form-control" step="0.01" min="0" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" class="form-control" required>
+              <option value="Em análise">Em análise</option>
+              <option value="Aprovado">Aprovado</option>
+              <option value="Reprovado">Reprovado</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn">Salvar Alterações</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/budget.js"></script>
+  <script>
+    // Verifica autenticação
+    checkAuth();
+    
+    // Carrega dados do orçamento para edição
+    const urlParams = new URLSearchParams(window.location.search);
+    const budgetId = urlParams.get('id');
+    
+    if (budgetId) {
+      // Simulação: busca orçamento (em produção, seria uma requisição AJAX)
+      const budget = {
+        id: budgetId,
+        number: 'ORC-2023-001',
+        project: 'Website Corporativo',
+        client: '1',
+        value: 12500.00,
+        responsible: '1',
+        status: 'Em análise',
+        date: '15/03/2023'
+      };
+      
+      // Preenche o formulário
+      document.getElementById('budgetId').value = budget.id;
+      document.getElementById('budgetNumber').value = budget.number;
+      document.getElementById('creationDate').value = budget.date;
+      document.getElementById('projectDescription').value = budget.project;
+      document.getElementById('client').value = budget.client;
+      document.getElementById('responsible').value = budget.responsible;
+      document.getElementById('estimatedValue').value = budget.value;
+      document.getElementById('status').value = budget.status;
+    }
+    
+    // Configura o formulário
+    document.getElementById('editBudgetForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Orçamento atualizado com sucesso!');
+      window.location.href = 'list.html';
+    });
+    
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+      if (confirm('Tem certeza que deseja cancelar? Todas as alterações não salvas serão perdidas.')) {
+        window.location.href = 'list.html';
+      }
+    });
+  </script>
+</body>
+</html>

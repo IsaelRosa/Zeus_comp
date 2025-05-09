@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Membro | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/create1.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="../budgets/list.html">Orçamentos</a></li>
+        <li><a href="list.html">Membros</a></li>
+        <li><a href="#">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="../index.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Adicionar Funcionário</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <div class="form-container">
+        <!-- Seção de Foto -->
+        <div class="photo-section">
+          <img id="photoPreview" src="../images/default-avatar.png" alt="Foto do Funcionário">
+          <label for="photo">Carregar Foto</label>
+          <input type="file" id="photo" accept=".jpg,.jpeg,.png">
+          <small>Formatos permitidos: JPG, JPEG, PNG (até 2MB)</small>
+        </div>
+
+        <!-- Campos do Formulário -->
+        <div class="form-fields">
+          <form id="createMemberForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Nome</label>
+                <input type="text" id="fullName" class="form-control" placeholder="Digite o nome completo" required>
+              </div>
+              <div class="form-group">
+                <label for="birthDate">Data de Nascimento</label>
+                <input type="date" id="birthDate" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Digite o endereço de e-mail" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Número de Telefone</label>
+                <input type="tel" id="phone" class="form-control" placeholder="Digite o número de telefone" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gender">Gênero</label>
+                <select id="gender" class="form-control">
+                  <option value="">Selecione o gênero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="position">Cargo</label>
+                <select id="position" class="form-control" required>
+                  <option value="">Selecione o cargo</option>
+                  <option value="Diretor">Diretor</option>
+                  <option value="Gerente">Gerente</option>
+                  <option value="Consultor">Consultor</option>
+                  <option value="Trainee">Trainee</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="joinDate">Data de Ingresso</label>
+                <input type="date" id="joinDate" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="skills">Habilidades</label>
+                <textarea id="skills" class="form-control" rows="3" placeholder="Descreva as habilidades"></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Adicionar</button>
+              <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/members.js"></script>
+</body>
+</html>

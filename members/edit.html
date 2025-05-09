@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Membro | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/members.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="../budgets/list.html">Orçamentos</a></li>
+        <li><a href="list.html">Membros</a></li>
+        <li><a href="#">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="../index.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Editar Membro</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <form id="editMemberForm">
+        <input type="hidden" id="memberId">
+        
+        <div class="current-photo">
+          <img id="currentPhoto" src="../images/default-profile.jpg" alt="Foto atual">
+          <label for="photo" class="btn btn-secondary">Alterar Foto</label>
+          <input type="file" id="photo" class="hidden" accept=".jpg,.jpeg,.png">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Nome Completo *</label>
+            <input type="text" id="fullName" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="birthDate">Data de Nascimento *</label>
+            <input type="date" id="birthDate" class="form-control" max="" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Institucional *</label>
+            <input type="email" id="email" class="form-control" required readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="position">Cargo *</label>
+            <select id="position" class="form-control" required>
+              <option value="">Selecione um cargo</option>
+              <option value="Diretor">Diretor</option>
+              <option value="Gerente">Gerente</option>
+              <option value="Consultor">Consultor</option>
+              <option value="Trainee">Trainee</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefone *</label>
+            <input type="tel" id="phone" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender">Gênero</label>
+            <select id="gender" class="form-control">
+              <option value="">Não especificado</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="joinDate">Data de Ingresso *</label>
+            <input type="date" id="joinDate" class="form-control" max="" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="skills">Habilidades</label>
+          <textarea id="skills" class="form-control" rows="3"></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn">Salvar Alterações</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/members.js"></script>
+  <script>
+    // Verifica autenticação
+    checkAuth();
+    
+    // Configura datas máximas (hoje)
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('birthDate').max = today;
+    document.getElementById('joinDate').max = today;
+    
+    // Simulação: carrega dados do membro para edição
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberId = urlParams.get('id');
+    
+    if (memberId) {
+      // Em produção, isso viria de uma API
+      const member = {
+        id: memberId,
+        fullName: 'João Silva',
+        birthDate: '1995-05-15',
+        email: 'joao.silva@complir.com',
+        position: 'Consultor',
+        phone: '(11) 98765-4321',
+        gender: 'Masculino',
+        joinDate: '2022-03-10',
+        skills: 'Gestão de projetos, Desenvolvimento web, Análise de requisitos',
+        photo: '../images/profile1.jpg'
+      };
+      
+      // Preenche o formulário
+      document.getElementById('memberId').value = member.id;
+      document.getElementById('fullName').value = member.fullName;
+      document.getElementById('birthDate').value = member.birthDate;
+      document.getElementById('email').value = member.email;
+      document.getElementById('position').value = member.position;
+      document.getElementById('phone').value = member.phone;
+      document.getElementById('gender').value = member.gender;
+      document.getElementById('joinDate').value = member.joinDate;
+      document.getElementById('skills').value = member.skills;
+      document.getElementById('currentPhoto').src = member.photo;
+    }
+    
+    // Configura formulário
+    document.getElementById('editMemberForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Dados do membro atualizados com sucesso!');
+      window.location.href = 'list.html';
+    });
+    
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+      if (confirm('Tem certeza que deseja cancelar? Todas as alterações não salvas serão perdidas.')) {
+        window.location.href = 'list.html';
+      }
+    });
+    
+    // Preview da nova foto
+    document.getElementById('photo').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          document.getElementById('currentPhoto').src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

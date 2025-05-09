@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Sistema ERP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="budgets/list.html">Orçamentos</a></li>
+        <li><a href="members/list.html">Membros</a></li> <!-- Correto -->
+        <li><a href="../auth-system/reports/financial.html">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Usuário</span>
+        <a href="../home.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <h2>Meu Painel</h2>
+      <p>Bem-vindo de volta!</p>
+      
+      <div class="user-stats">
+        <div class="stat-card">
+          <h3>Meus Orçamentos</h3>
+          <p id="myBudgets">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Pendentes</h3>
+          <p id="pendingBudgets">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    // Verifica autenticação e carrega dados do usuário
+    const user = checkAuth();
+    document.getElementById('userName').textContent = user.name;
+    
+    // Simulação de dados
+    document.getElementById('myBudgets').textContent = '5';
+    document.getElementById('pendingBudgets').textContent = '2';
+  </script>
+</body>
+</html>

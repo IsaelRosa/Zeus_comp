@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin | Sistema ERP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Menu lateral -->
+    <div class="sidebar">
+      <div class="logo">
+        <img src="assets/logo.png" alt="ComplIR Logo">
+        <h1>ComplIR</h1>
+        <p>Sistema ERP</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="dashboard-admin.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="budgets/list.html"><i class="fas fa-file-invoice-dollar"></i> Orçamentos</a></li>
+          <li><a href="members/list.html"><i class="fas fa-users"></i> Funcionários</a></li>
+          <li><a href="reports/financial.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <header>
+        <div class="user-info">
+          <span id="userName">João Jão</span>
+          <span>RH</span>
+          <a href="home.html" onclick="logout()">Sair</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <h2>Bem-vindo, Sr. João Jão</h2>
+        <p>Hoje é sábado, 11 de novembro de 2025.</p>
+
+        <!-- Cartões de estatísticas -->
+        <div class="stats-cards">
+          <div class="card">
+            <i class="fas fa-users card-icon blue"></i>
+            <h3>250</h3>
+            <p>Total de funcionários</p>
+            <span class="info">12% a mais que no último trimestre</span>
+          </div>
+          <div class="card">
+            <i class="fas fa-file-alt card-icon orange"></i>
+            <h3>100</h3>
+            <p>Total de candidaturas</p>
+            <span class="info">0,2% abaixo do último trimestre</span>
+          </div>
+          <div class="card">
+            <i class="fas fa-project-diagram card-icon purple"></i>
+            <h3>10</h3>
+            <p>Total de projetos</p>
+            <span class="info">2% a mais que no último trimestre</span>
+          </div>
+          <div class="card">
+            <i class="fas fa-building card-icon green"></i>
+            <h3>10</h3>
+            <p>Total de departamentos</p>
+          </div>
+        </div>
+
+        <!-- Seções do dashboard -->
+        <div class="dashboard-sections">
+          <!-- Comunicados -->
+          <div class="section">
+            <h3>Comunicados</h3>
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>S/N</th>
+                  <th>Título</th>
+                  <th>Enviado de</th>
+                  <th>Enviado para</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Comunicado de operações</td>
+                  <td>João Jão</td>
+                  <td>Israel</td>
+                  <td class="status pending">Pendente</td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Projeto de operações</td>
+                  <td>Fátima</td>
+                  <td>Mu de Áries</td>
+                  <td class="status approved">Aprovado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Lista de funcionários -->
+          <div class="section">
+            <h3>Lista de funcionários</h3>
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>S/N</th>
+                  <th>Nome</th>
+                  <th>Função</th>
+                  <th>Designação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Israel Kamakawiwo'ole</td>
+                  <td>Admin</td>
+                  <td>Recursos Humanos</td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Obi-Wan Kenobi</td>
+                  <td>Admin</td>
+                  <td>Gerenciamento</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

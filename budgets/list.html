@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orçamento | Sistema ERP</title>
+  <link rel="stylesheet" href="/auth-system/css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/auth-system/css/budget.css">
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="/auth-system/assets/logo.png" alt="ComplIR Logo">
+      <h1>ComplIR</h1>
+      <p>Sistema ERP</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="list.html" class="active"><i class="fas fa-file-invoice-dollar"></i> Orçamento</a></li>
+        <li><a href="../members/list.html"><i class="fas fa-users"></i> Funcionários</a></li>
+        <li><a href="../reports/financial.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">João João</span>
+        <span>RH</span>
+        <a href="/auth-system/home.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+
+    <div class="content">
+      <h2>Orçamento</h2>
+      <p>Visualize, crie e envie solicitações de orçamento.</p>
+
+      <!-- Cartões de resumo -->
+      <div class="summary-cards">
+        <div class="card">
+          <i class="fas fa-money-bill-wave card-icon blue"></i>
+          <h3>R$23,000,000</h3>
+          <p>Orçamento anual total</p>
+          <span class="info">5% a mais que no ano passado</span>
+        </div>
+        <div class="card">
+          <i class="fas fa-coins card-icon orange"></i>
+          <h3>R$10,000,000</h3>
+          <p>Quantidade usada</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-wallet card-icon purple"></i>
+          <h3>R$13,000,000</h3>
+          <p>Saldo orçamental total</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-percentage card-icon green"></i>
+          <h3>48%</h3>
+          <p>Orçamento utilizado</p>
+        </div>
+      </div>
+
+      <!-- Botão para criar orçamento -->
+      <div class="create-budget">
+        <a href="create.html" class="btn btn-primary">Criar orçamento</a>
+      </div>
+
+      <!-- Tabela de histórico -->
+      <div class="budget-history">
+        <h2>Histórico do orçamento</h2>
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Orçamento nº</th>
+              <th>Descrição do projeto</th>
+              <th>Valor estimado (R$)</th>
+              <th>Custos previstos (R$)</th>
+              <th>Cliente associado</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="budgetTableBody">
+            <!-- Linhas serão geradas dinamicamente pelo JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/auth-system/js/budget.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes | Sistema ERP</title>
+  <link rel="stylesheet" href="/auth-system/css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/auth-system/css/clients.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1>ComplIR</h1>
+      <p>Sistema ERP</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="../budgets/list.html"><i class="fas fa-file-invoice-dollar"></i> Orçamentos</a></li>
+        <li><a href="../members/list.html"><i class="fas fa-users"></i> Membros</a></li>
+        <li><a href="list.html" class="active"><i class="fas fa-user"></i> Clientes</a></li>
+        <li><a href="../reports/financial.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="#" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Clientes Cadastrados</h2>
+      </div>
+      
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar clientes..." class="search-input">
+        <button id="searchBtn" class="btn btn-secondary">Buscar</button>
+      </div>
+      
+      <div class="table-container">
+        <table class="clients-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CNPJ/CPF</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Data Cadastro</th>
+            </tr>
+          </thead>
+          <tbody id="clientsTableBody">
+            <tr>
+              <td>Empresa ABC Ltda</td>
+              <td>12.345.678/0001-90</td>
+              <td>contato@empresaabc.com</td>
+              <td>(11) 98765-4321</td>
+              <td>14/01/2023</td>
+            </tr>
+            <tr>
+              <td>Empresa XYZ S.A.</td>
+              <td>98.765.432/0001-12</td>
+              <td>contato@empresaxyz.com</td>
+              <td>(21) 91234-5678</td>
+              <td>20/02/2023</td>
+            </tr>
+            <tr>
+              <td>João Silva ME</td>
+              <td>23.456.789/0001-34</td>
+              <td>joao@joaosilva.com</td>
+              <td>(31) 99876-5432</td>
+              <td>05/03/2023</td>
+            </tr>
+            <tr>
+              <td>Maria Souza LTDA</td>
+              <td>34.567.890/0001-56</td>
+              <td>maria@mariasouza.com</td>
+              <td>(41) 98765-1234</td>
+              <td>10/04/2023</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/auth-system/js/auth.js"></script>
+  <script src="/auth-system/js/clients.js"></script>
+  <script>
+    checkAuth();
+  </script>
+</body>
+</html>

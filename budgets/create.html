@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Orçamento | Sistema ERP</title>
+  <link rel="stylesheet" href="/auth-system/css/style.css">
+  <link rel="stylesheet" href="/auth-system/css/create.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Menu lateral -->
+    <div class="sidebar">
+      <div class="logo">
+        <div>ComplIR</div>
+        <h1>Sistema ERP</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../dashboard-admin.html">Dashboard</a></li>
+          <li><a href="list.html" class="active">Orçamentos</a></li>
+          <li><a href="../clients/list.html">Clientes</a></li>
+          <li><a href="../reports/financial.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <header>
+        <a href="list.html" class="btn btn-secondary voltar">Voltar</a>
+        <div class="user-info">
+          <span>Administrador</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <h1>Criar orçamento</h1>
+        <p>Por favor, preencha o formulário abaixo para criar um orçamento</p>
+
+        <!-- Formulário de criação -->
+        <form id="createBudgetForm" class="form-grid">
+          <div class="form-group">
+            <label for="budgetNumber">Número do orçamento</label>
+            <input type="text" id="budgetNumber" value="ORC-2025-695" readonly>
+          </div>
+          <div class="form-group">
+            <label for="projectDescription">Descrição do projeto</label>
+            <input type="text" id="projectDescription" placeholder="Insira a descrição do projeto" required>
+          </div>
+          <div class="form-group">
+            <label for="estimatedValue">Valor estimado (R$)</label>
+            <input type="number" id="estimatedValue" placeholder="Insira o valor em R$" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="predictedCosts">Custos previstos</label>
+            <input type="number" id="predictedCosts" placeholder="Insira o valor em R$" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="client">Cliente associado</label>
+            <select id="client" required>
+              <option value="">Selecione o cliente</option>
+              <option value="Cliente A">Cliente A</option>
+              <option value="Cliente B">Cliente B</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="responsible">Membro responsável</label>
+            <select id="responsible" required>
+              <option value="">Selecione o responsável</option>
+              <option value="João Silva">João Silva</option>
+              <option value="Maria Souza">Maria Souza</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Criar orçamento</button>
+          </div>
+        </form>
+
+        <!-- Solicitação de orçamento -->
+        <div class="budget-request">
+          <h2>Solicitação de orçamento</h2>
+          <table class="budget-table">
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Orçamento nº</th>
+                <th>Descrição do projeto</th>
+                <th>Valor estimado (R$)</th>
+                <th>Data de criação</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td>00211235</td>
+                <td>Criação de landingpage beneficente</td>
+                <td>1,400,000.00</td>
+                <td>18/11/2022</td>
+                <td><button class="btn btn-primary">Enviar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/budget.js"></script>
+</body>
+</html>

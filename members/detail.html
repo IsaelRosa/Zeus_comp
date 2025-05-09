@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Membro | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/members.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div>ComplIR</div>
+      <h1>Sistema ERP</h1>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html">Dashboard</a></li>
+        <li><a href="../budgets/list.html">Orçamentos</a></li>
+        <li><a href="list.html">Membros</a></li>
+        <li><a href="#">Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">Administrador</span>
+        <a href="../index.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="page-header">
+        <h2>Detalhes do Membro</h2>
+        <a href="list.html" class="btn btn-secondary">Voltar</a>
+      </div>
+      
+      <div class="member-detail">
+        <div class="member-photo">
+          <img id="memberPhoto" src="../images/profile1.jpg" alt="Foto do membro">
+        </div>
+        
+        <div class="member-info">
+          <h3 id="memberName">João Silva</h3>
+          <p id="memberPosition" class="position">Consultor</p>
+          
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Email:</span>
+              <span id="memberEmail" class="info-value">joao.silva@complir.com</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Telefone:</span>
+              <span id="memberPhone" class="info-value">(11) 98765-4321</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Data de Nascimento:</span>
+              <span id="memberBirthDate" class="info-value">15/05/1995</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Gênero:</span>
+              <span id="memberGender" class="info-value">Masculino</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Data de Ingresso:</span>
+              <span id="memberJoinDate" class="info-value">10/03/2022</span>
+            </div>
+            
+            <div class="info-item full-width">
+              <span class="info-label">Habilidades:</span>
+              <span id="memberSkills" class="info-value">Gestão de projetos, Desenvolvimento web, Análise de requisitos</span>
+            </div>
+          </div>
+          
+          <div class="member-actions">
+            <a href="edit.html?id=1" class="btn">Editar</a>
+            <button id="deleteBtn" class="btn btn-danger">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/members.js"></script>
+  <script>
+    // Verifica autenticação
+    checkAuth();
+    
+    // Simulação: carrega dados do membro
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberId = urlParams.get('id');
+    
+    if (memberId) {
+      // Em produção, isso viria de uma API
+      const member = {
+        id: memberId,
+        fullName: 'João Silva',
+        birthDate: '1995-05-15',
+        email: 'joao.silva@complir.com',
+        position: 'Consultor',
+        phone: '(11) 98765-4321',
+        gender: 'Masculino',
+        joinDate: '2022-03-10',
+        skills: 'Gestão de projetos, Desenvolvimento web, Análise de requisitos',
+        photo: '../images/profile1.jpg'
+      };
+      
+      // Formata datas
+      const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('pt-BR');
+      };
+      
+      // Preenche os detalhes
+      document.getElementById('memberPhoto').src = member.photo;
+      document.getElementById('memberName').textContent = member.fullName;
+      document.getElementById('memberPosition').textContent = member.position;
+      document.getElementById('memberEmail').textContent = member.email;
+      document.getElementById('memberPhone').textContent = member.phone;
+      document.getElementById('memberBirthDate').textContent = formatDate(member.birthDate);
+      document.getElementById('memberGender').textContent = member.gender;
+      document.getElementById('memberJoinDate').textContent = formatDate(member.joinDate);
+      document.getElementById('memberSkills').textContent = member.skills;
+      
+      // Configura botões
+      document.querySelector('.member-actions a').href = `edit.html?id=${memberId}`;
+      
+      document.getElementById('deleteBtn').addEventListener('click', function() {
+        if (confirm('Tem certeza que deseja excluir este membro?')) {
+          alert('Membro excluído com sucesso!');
+          window.location.href = 'list.html';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

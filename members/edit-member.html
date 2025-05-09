@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edição de Membro | Sistema ERP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/employees.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Menu lateral -->
+    <div class="sidebar">
+      <div class="logo">
+        <div>ComplIR</div>
+        <h1>Sistema ERP</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../dashboard-admin.html">Dashboard</a></li>
+          <li><a href="../employees.html">Funcionários</a></li>
+          <li><a href="../budgets/list.html">Orçamentos</a></li>
+          <li><a href="list.html" class="active">Membros</a></li>
+          <li><a href="../reports/financial.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <header>
+        <div class="user-info">
+          <span id="userName">João Jão</span>
+          <a href="../home.html" onclick="logout()">Sair</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <h2>Editar Membro</h2>
+        <p>Atualize as informações do membro abaixo</p>
+
+        <!-- Formulário de edição -->
+        <form id="editMemberForm" class="form">
+          <div class="form-group">
+            <label for="fullName">Nome completo</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Digite o nome completo" required>
+          </div>
+
+          <div class="form-group">
+            <label for="birthDate">Data de nascimento</label>
+            <input type="date" id="birthDate" name="birthDate" max="2025-05-08" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail institucional</label>
+            <input type="email" id="email" name="email" placeholder="exemplo@complir.com" pattern=".+@complir\.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Cargo</label>
+            <select id="role" name="role" required>
+              <option value="">Selecione o cargo</option>
+              <option value="admin">Admin</option>
+              <option value="rh">RH</option>
+              <option value="projetos">Projetos</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gênero</label>
+            <select id="gender" name="gender">
+              <option value="">Selecione o gênero</option>
+              <option value="male">Masculino</option>
+              <option value="female">Feminino</option>
+              <option value="other">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Foto</label>
+            <input type="file" id="photo" name="photo" accept=".jpg, .jpeg, .png">
+            <small>Formatos permitidos: JPG, JPEG, PNG. Tamanho máximo: 2MB</small>
+          </div>
+
+          <div class="form-group">
+            <label for="joinDate">Data de ingresso</label>
+            <input type="date" id="joinDate" name="joinDate" max="2025-05-08" required>
+          </div>
+
+          <div class="form-group">
+            <label for="skills">Habilidades</label>
+            <input type="text" id="skills" name="skills" placeholder="Digite as habilidades separadas por vírgula">
+          </div>
+
+          <!-- Botões -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-secondary" onclick="confirmCancel()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmCancel() {
+      if (confirm("Tem certeza de que deseja descartar as alterações?")) {
+        window.location.href = "list.html";
+      }
+    }
+
+    document.getElementById('editMemberForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Membro atualizado com sucesso!');
+      window.location.href = "list.html";
+    });
+  </script>
+</body>
+</html>

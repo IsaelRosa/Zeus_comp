@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Funcionário | Sistema ERP</title>
+  <link rel="stylesheet" href="/auth-system/css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/auth-system/css/add-member.css">
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <div class="logo">
+      <h1>ComplIR</h1>
+      <p>Sistema ERP</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../dashboard-admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="../budgets/list.html"><i class="fas fa-file-invoice-dollar"></i> Orçamentos</a></li>
+        <li><a href="../members/list.html"><i class="fas fa-users"></i> Membros</a></li>
+        <li><a href="add-member.html" class="active"><i class="fas fa-user-plus"></i> Adicionar Funcionário</a></li>
+        <li><a href="../reports/financial.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <header>
+      <div class="user-info">
+        <span id="userName">João João</span>
+        <span>RH</span>
+        <a href="/auth-system/home.html" onclick="logout()">Sair</a>
+      </div>
+    </header>
+    
+    <div class="content">
+      <h2>Adicionar Funcionário</h2>
+      <p>Criar um novo funcionário</p>
+
+      <!-- Formulário -->
+      <form id="addMemberForm" class="form">
+        <div class="form-layout">
+          <!-- Área para carregar a foto -->
+          <div class="photo-section">
+            <label for="photo">Carregar foto</label>
+            <div class="photo-container">
+              <input type="file" id="photo" name="photo" accept=".jpg, .jpeg, .png">
+              <i class="fas fa-camera"></i>
+              <small>Formatos permitidos: JPG, JPEG, PNG. Tamanho máximo: 2MB</small>
+            </div>
+          </div>
+
+          <!-- Campos do formulário -->
+          <div class="form-fields">
+            <div class="form-group">
+              <label for="fullName">Nome</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Digite o nome completo" required>
+            </div>
+
+            <div class="form-group">
+              <label for="birthDate">Data de nascimento</label>
+              <input type="date" id="birthDate" name="birthDate" max="2025-05-08" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="Digite o endereço de e-mail" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Número de telefone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Digite o número de telefone">
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gênero</label>
+              <select id="gender" name="gender">
+                <option value="">Selecione o gênero</option>
+                <option value="male">Masculino</option>
+                <option value="female">Feminino</option>
+                <option value="other">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="joinDate">Data de ingresso</label>
+              <input type="date" id="joinDate" name="joinDate" max="2025-05-08" required>
+            </div>
+
+            <div class="form-group">
+              <label for="role">Cargo</label>
+              <select id="role" name="role" required>
+                <option value="">Selecione o cargo</option>
+                <option value="admin">Admin</option>
+                <option value="rh">RH</option>
+                <option value="projetos">Projetos</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="skills">Habilidades</label>
+              <input type="text" id="skills" name="skills" placeholder="Digite as habilidades separadas por vírgula">
+            </div>
+          </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/auth-system/js/auth.js"></script>
+  <script src="/auth-system/js/add-member.js"></script>
+</body>
+</html>

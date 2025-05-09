@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funcionários | Sistema ERP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/employees.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Menu lateral -->
+    <div class="sidebar">
+      <div class="logo">
+        <div>ComplIR</div>
+        <h1>Sistema ERP</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="dashboard-admin.html">Dashboard</a></li>
+          <li><a href="employees.html" class="active">Funcionários</a></li>
+          <li><a href="budgets/list.html">Orçamentos</a></li>
+          <li><a href="members/list.html">Membros</a></li>
+          <li><a href="../auth-system/reports/financial.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <header>
+        <div class="user-info">
+          <span id="userName">João Jão</span>
+          <a href="../home.html" onclick="logout()">Sair</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <h2>Todos os funcionários</h2>
+        <p>Visualizar, pesquisar e adicionar novos funcionários</p>
+
+        <!-- Barra de ações -->
+        <div class="actions-bar">
+          <input type="text" placeholder="Digite o nome de pesquisa" class="search-bar">
+          <select class="filter-dropdown">
+            <option value="all">Todos</option>
+            <option value="admin">Admin</option>
+            <option value="projects">Projetos</option>
+            <option value="rh">RH</option>
+          </select>
+          <button class="btn btn-primary" onclick="addEmployee()">Adicionar novo</button>
+        </div>
+
+        <!-- Tabela de funcionários -->
+        <div class="employee-table">
+          <table>
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Nascimento</th>
+                <th>Ingresso</th>
+                <th>Email</th>
+                <th>Área</th>
+                <th>Cargo</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td>Sandra</td>
+                <td>(35) 98765-4321</td>
+                <td>01/01/1999</td>
+                <td>01/01/2024</td>
+                <td>sandra@complir.com</td>
+                <td>Gerência</td>
+                <td>Recursos Humanos</td>
+                <td>
+                  <a href="members/edit-member.html" class="btn btn-link">Editar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>02</td>
+                <td>Abdu</td>
+                <td>(35) 98765-4321</td>
+                <td>01/01/1999</td>
+                <td>01/01/2024</td>
+                <td>abdu@complir.com</td>
+                <td>Projetos</td>
+                <td>Operações</td>
+                <td>
+                  <a href="members/edit-member.html" class="btn btn-link">Editar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginação -->
+        <div class="pagination">
+          <button class="page-btn">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">5</button>
+          <button class="page-btn">>></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/employees.js"></script>
+</body>
+</html>
